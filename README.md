@@ -26,12 +26,12 @@ The job of the chat controller is to collect enough information about the member
 
 1. Member profile and provider preference models are stored in search input state, along with chat history.
 2. The ProviderSearchController chooses a ProviderSearchAgent for the next set of questions, based on state.
-
-    When no data has been collected, it chooses the GeneralProviderSearchAgent as a starting agent
-    If required information is not yet answered, it will choose an individual agent, such as MemberDemographicsProviderSearchAgent
-    If the individual agent has completed its questioning, it will not be selected again
-    If an individual agent returns no match, the GeneralProviderSearchAgent will try a general response.
-    After all data has been collected, the GeneralProviderSearchAgent will respond with a list of matching providers
+3. When no data has been collected, it chooses the GeneralProviderSearchAgent as a starting agent
+4. If required information is not yet answered, it will choose an individual agent, such as MemberDemographicsProviderSearchAgent
+5. If the individual agent has completed its questioning, it will not be selected again
+6. If an individual agent returns no match, the GeneralProviderSearchAgent will try a general response.
+7. After all data has been collected and confirmed, the GeneralProviderSearchAgent will respond with a list of matching providers
+   (this last part is not yet implemented)
 
 ## File organization
 * main.py - executes console input/output and calls the controller in a loop
@@ -47,8 +47,9 @@ to why the user is present.
 If provider data is initially unstructured (e.g. scraped from web sites), we could use the LLM to structure it.
 Ideally the provider data and search input are structured
 
-* structured matching is far superior to LLM matching and can easily 
-  support matching against a large set of provider data (1M entries or more) using a SQL database or ES cluster
-* still, it might be nice to support some unstructured matching for "other" provider information.
-  the structured search could come first to identify a small count of providers (e.g. 50) , then an LLM matching operation second
+* structured matching is far more scalable than LLM matching for large datasets.
+* LLM will not be able to match efficiently if the amount of data to match is larger than max tokens
+* structured matching can support matching against a large set of provider data (1M entries or more) using a SQL database or ES cluster
+* It might be nice to support some unstructured matching for "other" provider information.
+* The way this is work is that the structured search would first identify a small count of providers (e.g. 50), then an LLM matching operation would run on the small set
 
