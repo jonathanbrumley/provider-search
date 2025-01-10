@@ -22,8 +22,6 @@ class ProviderSearchChatAgent(ABC):
     def constraints(self) -> str:
         """
         Abstract method to return constraints specific to this agent
-        Parameters:
-            input_state (ProviderSearchInputState): The current state of the user's input.
         Returns:
             a string describing additional constraints for this agent's outputs
         """
@@ -32,10 +30,8 @@ class ProviderSearchChatAgent(ABC):
     def goal(self) -> str:
         """
         Abstract method to return the chat goal specific to this agent
-        Parameters:
-            input_state (ProviderSearchInputState): The current state of the user's input.
         Returns:
-            a string describing additional constraints for this agent's outputs
+            a string describing goals for this agent's chat message
         """
         return ""
 
