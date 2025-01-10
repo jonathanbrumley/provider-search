@@ -26,7 +26,6 @@ class TreatmentSpecialty(str, Enum):
     LIFE_COACHING = "LIFE_COACHING"
 
 class Gender(str, Enum):
-    NON_DISCLOSED = "NON_DISCLOSED"
     MALE = "MALE"
     FEMALE = "FEMALE"
     OTHER = "OTHER"
