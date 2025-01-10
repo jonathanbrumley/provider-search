@@ -38,6 +38,7 @@ The job of the chat controller is to collect enough information about the member
 * contoller.py - tracks the search state and chat history and selects the next agent
 * agents.py - individual agents which specify what state they match on, prompt goal and constraints
 * models.py - Pydantic models for the search input and provider data
+* structured_chat.py - a helper for OpenAI chat completions returning structured outputs
 
 ## Observations
 * gpt-4o-mini has somewhat inconsistent performance compared with gpt-4o.  It is not great at matching provider specialties
